@@ -16,23 +16,26 @@ public class HelloServlet extends HttpServlet {
 
     private final Logger logger = LoggerFactory.getLogger(HelloServlet.class);
     private static final String NAME_PARAM = "name";
+
+    //konstruktor
     private HelloService service;
+    HelloServlet(HelloService service) {
+        this.service = service;
+    }
 
     @SuppressWarnings("Unused")
     public HelloServlet(){
         this(new HelloService());
     }
 
-    HelloServlet(HelloService service) {
-        this.service = service;
-    }
-
+    //Servlet get
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         logger.info("Request received with params: "+ req.getParameterMap());
-       var name = Optional.ofNullable(req.getParameter(NAME_PARAM)).orElse("World");
-        //var name = req.getParameter(NAME_PARAM);
-        resp.getWriter().write(service.prepareGreeting(req.getParameter(NAME_PARAM)));
+        var name = req.getParameter(NAME_PARAM);
+        var greet = service.prepareGreeting(name);
+        var world = Optional.ofNullable(name).orElse("World");
+        resp.getWriter().write(greet);
     }
 }
