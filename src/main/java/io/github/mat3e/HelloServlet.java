@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Optional;
 
 @WebServlet(name = "Hello", urlPatterns = {"api/*"})
 public class HelloServlet extends HttpServlet {
 
+    private static final String LANG_PARAM = "lang";
     private final Logger logger = LoggerFactory.getLogger(HelloServlet.class);
     private static final String NAME_PARAM = "name";
 
@@ -34,8 +34,7 @@ public class HelloServlet extends HttpServlet {
 
         logger.info("Request received with params: "+ req.getParameterMap());
         var name = req.getParameter(NAME_PARAM);
-        var greet = service.prepareGreeting(name);
-        var world = Optional.ofNullable(name).orElse("World");
-        resp.getWriter().write(greet);
+        var lang = req.getParameter(LANG_PARAM);
+        resp.getWriter().write(service.prepareGreeting(name, lang));
     }
 }

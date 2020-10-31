@@ -47,7 +47,18 @@
             <artifactId>jetty-annotations</artifactId>
             <version>${jetty.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- db-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -62,6 +73,17 @@
                             <mainClass>io.github.mat3e.App</mainClass>
                         </manifest>
                     </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.4</version>
+                <configuration>
+
+                        <url>jdbc:h2:file:./db</url>
+                        <user>sa</user>
+
                 </configuration>
             </plugin>
 
