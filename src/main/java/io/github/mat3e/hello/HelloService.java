@@ -1,8 +1,11 @@
-package io.github.mat3e;
+package io.github.mat3e.hello;
+
+import io.github.mat3e.lang.Lang;
+import io.github.mat3e.lang.LangRepository;
 
 import java.util.Optional;
 
-class HelloService {
+ class HelloService {
     private LangRepository repository;
 
     static final String FALLBACK_NAME = "World";

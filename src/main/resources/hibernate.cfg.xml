@@ -34,7 +34,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="io.github.mat3e.Lang"/>
+        <mapping class="io.github.mat3e.lang.Lang"/>
 
     </session-factory>
 

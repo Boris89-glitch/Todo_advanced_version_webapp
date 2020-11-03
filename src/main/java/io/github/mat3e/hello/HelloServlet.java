@@ -1,4 +1,4 @@
-package io.github.mat3e;
+package io.github.mat3e.hello;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Hello", urlPatterns = {"api/*"})
+@WebServlet(name = "Hello", urlPatterns = {"api"})
 public class HelloServlet extends HttpServlet {
 
-    private static final String LANG_PARAM = "lang";
+    private static final String LANG_PARAM = "io/github/mat3e/lang";
     private final Logger logger = LoggerFactory.getLogger(HelloServlet.class);
     private static final String NAME_PARAM = "name";
 
