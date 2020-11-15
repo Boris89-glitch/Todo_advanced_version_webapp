@@ -6,6 +6,9 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateUtil {
+    private HibernateUtil(){
+
+    }
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
     static void close() {
@@ -28,7 +31,5 @@ public class HibernateUtil {
             throw e;
         }
     }
-    private HibernateUtil(){
 
-    }
 }

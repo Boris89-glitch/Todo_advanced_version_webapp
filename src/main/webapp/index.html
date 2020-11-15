@@ -51,10 +51,6 @@
         .catch(console.warn);
     });
 
-    // TODO: remove
-    createNewTodo({ id: 1, text: 'Works in progress, ToDO API is still missing!!', done: true });
-    createNewTodo({ id: 2, text: 'mock 2', done: false });
-
     function createNewTodo(todo) {
       const label = document.createElement('label');
       label.classList.add('pure-checkbox');
@@ -123,4 +119,3 @@
       throw new Error(`Status not 200 (${response.status})`);
     }
   })();
-    </script>
