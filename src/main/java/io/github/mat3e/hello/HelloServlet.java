@@ -33,9 +33,16 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         logger.info("Request received with params: "+ req.getParameterMap());
-        
+
         var name = req.getParameter(NAME_PARAM);
         var lang = req.getParameter(LANG_PARAM);
-        resp.getWriter().write(service.prepareGreeting(name, lang));
+        Integer langId = null;
+        //get langId if there is one
+        try {
+            langId = Integer.valueOf(lang);
+        } catch (NumberFormatException e){
+            logger.warn("Non-numeric lang id" + lang);
+        }
+        resp.getWriter().write(service.prepareGreeting(name, langId));
     }
 }

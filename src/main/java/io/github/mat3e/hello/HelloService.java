@@ -16,9 +16,9 @@ import java.util.Optional;
         this.repository = repository;
     }
 
-    String prepareGreeting(String name, String lang){
+    String prepareGreeting(String name, Integer langId){
         //get langId if there is one
-        var langId = Optional.ofNullable(lang).map(Integer::valueOf).orElse(FALLBACK_LANG.getId());
+        langId = Optional.ofNullable(langId).orElse(FALLBACK_LANG.getId());
 
         //find the lang by id or go to fallback
         var welcomeMsg = repository.findById(langId).orElse(FALLBACK_LANG).getWelcomeMsg();

@@ -18,7 +18,7 @@ public class HelloServiceTest {
         var SUT = new HelloService(mockRepository);
         
         //when
-        var result = SUT.prepareGreeting(null, "-1");
+        var result = SUT.prepareGreeting(null, -1);
 
         //then
         assertEquals(WELCOME + " "+ HelloService.FALLBACK_NAME + "!", result);
@@ -32,7 +32,7 @@ public class HelloServiceTest {
         var name = "test";
 
         //when
-        var result = SUT.prepareGreeting(name, "-1");
+        var result = SUT.prepareGreeting(name, -1);
 
         //then
         assertEquals(WELCOME + " " + name + "!", result);
@@ -49,7 +49,7 @@ public class HelloServiceTest {
                 if(id.equals(HelloService.FALLBACK_LANG.getId())){
                     Optional.of(new Lang(null, fallbackIdWelcome, null));
                 }
-                return Optional.empty();
+                return Optional.of(new Lang(1, "Hey", "2"));
             }
         };
         var SUT = new HelloService(mockRepository);

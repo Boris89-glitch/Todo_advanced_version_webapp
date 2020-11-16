@@ -18,7 +18,7 @@ public class Todo {
     private String welcomeMsg;
     private String code;
     private String text;
-    private Boolean done;
+    private boolean done;
 
     Todo(){ }
 
@@ -54,11 +54,10 @@ public class Todo {
         this.text = text;
     }
 
-    public Boolean getDone() {
-        return done;
-    }
-
-    public void setDone(Boolean done) {
+    public void setDone(boolean done) {
         this.done = done;
+    }
+    public boolean isDone() {
+        return done;
     }
 }
